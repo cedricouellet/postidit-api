@@ -3,7 +3,7 @@ import { createPool, PoolConnection } from "mariadb";
 import * as process from "process";
 
 const pool = createPool({
-  host: process.env.DB_HOST,
+  host: process.env.DB_DATABASE,
   user: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
@@ -29,11 +29,24 @@ async function query(sql: string, params: any[] = []) {
 
   try {
     connection = await pool.getConnection();
+    return await connection.query(sql, params);
   } catch (err) {
     throw err;
   } finally {
     if (connection) await connection.release();
   }
 }
+
+/**
+ * Removes metadata from a query result.
+ * @param {any} queryResult The object to remove metadata from.
+ * @return {any} The object without metadata.
+ */
+function clean(queryResult: any) {
+  delete queryResult?.meta;
+  return queryResult;
+}
+
+export { clean, query };
 
 export default query;

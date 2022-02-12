@@ -7,4 +7,14 @@ function isNullOrUndefined(value: any): boolean {
   return value === null || value === undefined;
 }
 
-export { isNullOrUndefined };
+/**
+ * Convert a string to a number.
+ * @param {string} value The value to convert.
+ * @return {number | null} The converted value or undefined.
+ */
+function toNumber(value: string | undefined): number | null {
+  const parsed = Number(value);
+  return isNaN(parsed) ? null : parsed;
+}
+
+export { isNullOrUndefined, toNumber };

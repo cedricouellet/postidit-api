@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   mariadb:
-    container_name: postidit_mariadb
+    container_name: ${DB_DATABASE:?}
     build: 
       context: .
       dockerfile: database.dockerfile
