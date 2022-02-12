@@ -1,0 +1,17 @@
+# Documentation
+README.md
+LICENSE
+documentation
+
+# NPM packages
+node_modules
+
+# Docker
+Dockerfiles
+
+# Env config template
+.template.env
+
+# Git
+.git
+.gitignore

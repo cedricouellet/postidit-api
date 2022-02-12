@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  mariadb:
+    container_name: postidit_mariadb
+    build: 
+      context: .
+      dockerfile: database.dockerfile
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:?}
+      MARIADB_DATABASE: ${DB_DATABASE:?}
+    volumes:
+      - postidit_data:/var/lib/mysql
+    ports:
+      - 3306:${DB_PORT}
+
+  phpmyadmin:
+    container_name: postidit_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    depends_on: [mariadb]
+    environment:
+      PMA_HOST: ${DB_DATABASE:?}
+      PMA_PORT: ${DB_PORT:?}
+      PMA_USER: ${DB_USERNAME:?}
+      PMA_PASSWORD: ${DB_PASSWORD:?}
+    restart: always
+    ports: 
+      - "8080:80"
+
+volumes:
+  postidit_data:
