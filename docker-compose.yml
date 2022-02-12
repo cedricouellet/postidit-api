@@ -12,7 +12,7 @@ services:
     volumes:
       - postidit_data:/var/lib/mysql
     ports:
-      - 3306:${DB_PORT}
+      - 3306:${DB_PORT:?}
 
   phpmyadmin:
     container_name: postidit_phpmyadmin
@@ -32,7 +32,7 @@ services:
     build:
       context: .
       dockerfile: server.dockerfile
-    depends_on: [mariadb]
+    depends_on: [mariadb, phpmyadmin]
     ports:
       - "3000:${PORT:?}"
     volumes:
