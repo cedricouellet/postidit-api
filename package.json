@@ -1,0 +1,10 @@
+{
+  "name": "postidit-api",
+  "version": "0.0.0",
+  "description": "A simple post REST API",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Cedric-A. Ouellet",
+  "license": "ISC"
+}

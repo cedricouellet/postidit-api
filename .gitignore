@@ -1,0 +1,18 @@
+# Database files
+data/mysql
+data/mariadb
+
+# Node.js
+package-lock.json
+node_modules
+
+# Transpiled TypeScript
+dist
+
+# Private config
+.env
+
+# IDE metadata
+.idea
+.vscode
+.vs
