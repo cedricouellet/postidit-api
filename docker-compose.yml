@@ -27,5 +27,17 @@ services:
     ports: 
       - "8080:80"
 
+  server:
+    container_name: postidit_server
+    build:
+      context: .
+      dockerfile: server.dockerfile
+    depends_on: [mariadb]
+    ports:
+      - "3000:${PORT:?}"
+    volumes:
+      - /postidit-api/node_modules
+      - .:/postidit-api
+
 volumes:
   postidit_data:
