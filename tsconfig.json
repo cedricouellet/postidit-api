@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "baseUrl": "src",
+    "noImplicitOverride": true,
+    "strict": true
+  },
+  "include": ["src/**/*.ts", "src/*.ts"],
+  "exclude": ["node_modules", "src/**/*.tnpxest.ts", "src/*.test.ts"]
+}
